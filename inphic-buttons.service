@@ -1,0 +1,16 @@
+[Unit]
+Description=Inphic mouse copy/paste buttons
+After=systemd-udev-trigger.service
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/inphic-buttons/mouse_buttons.py run
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=5
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
